@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FORGE Fitness — Premium Urban Training Studio</title>
+<meta name="description" content="FORGE Fitness is a premium strength and conditioning studio in Indiranagar, Bangalore. Train smarter. Get stronger.">
+<meta name="theme-color" content="#0A0A0A">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0A0A0A;--bg-2:#141414;--bg-3:#1F1F1F;
+  --text:#F5F5F5;--text-dim:#A8A8A8;
+  --accent:#FF5A1F;--accent-hover:#FF7A45;
+  --border:#2A2A2A;--max:1280px;
+  --font-head:'Inter Tight','Inter',system-ui,-apple-system,sans-serif;
+  --font-body:'Inter',system-ui,-apple-system,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.container{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-inner{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+.logo{font-family:var(--font-head);font-weight:900;font-size:22px;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
+.logo-dot{width:10px;height:10px;background:var(--accent);border-radius:2px;display:inline-block}
+.nav-menu{display:flex;gap:36px;align-items:center}
+.nav-menu a{font-size:14px;font-weight:500;color:var(--text-dim);transition:color .2s}
+.nav-menu a:hover{color:var(--text)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;font-weight:600;font-size:14px;border-radius:4px;transition:all .2s;cursor:pointer;border:none;font-family:inherit;letter-spacing:.02em}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent-hover);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border)}
+.btn-ghost:hover{border-color:var(--text)}
+.menu-toggle{display:none;background:none;border:none;color:var(--text);font-size:24px;cursor:pointer}
+
+/* HERO */
+.hero{position:relative;padding:120px 0 100px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(255,90,31,.15),transparent 50%);pointer-events:none}
+.hero-inner{position:relative;display:grid;grid-template-columns:1.2fr 1fr;gap:60px;align-items:center}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.15em;margin-bottom:24px}
+.hero-eyebrow::before{content:"";width:32px;height:1px;background:var(--accent)}
+.hero h1{font-family:var(--font-head);font-size:clamp(48px,7vw,96px);font-weight:900;line-height:.95;letter-spacing:-.04em;margin-bottom:28px}
+.hero h1 span{color:var(--accent)}
+.hero p{font-size:18px;color:var(--text-dim);max-width:520px;margin-bottom:40px;line-height:1.6}
+.hero-ctas{display:flex;gap:16px;flex-wrap:wrap}
+.hero-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;padding:32px;background:var(--bg-2);border:1px solid var(--border);border-radius:8px}
+.stat-num{font-family:var(--font-head);font-size:48px;font-weight:900;color:var(--text);line-height:1;margin-bottom:8px}
+.stat-num span{color:var(--accent)}
+.stat-label{font-size:13px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.1em}
+
+/* SECTION */
+section{padding:100px 0;border-top:1px solid var(--border)}
+.section-head{max-width:720px;margin-bottom:64px}
+.section-eyebrow{font-size:13px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.15em;margin-bottom:16px;display:block}
+.section-head h2{font-family:var(--font-head);font-size:clamp(36px,5vw,56px);font-weight:800;line-height:1.05;letter-spacing:-.03em;margin-bottom:20px}
+.section-head p{font-size:17px;color:var(--text-dim)}
+
+/* PROGRAMS */
+.programs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.program-card{background:var(--bg-2);border:1px solid var(--border);padding:36px 32px;border-radius:8px;transition:all .3s;cursor:pointer}
+.program-card:hover{border-color:var(--accent);transform:translateY(-4px)}
+.program-icon{width:48px;height:48px;background:var(--bg-3);border-radius:6px;display:flex;align-items:center;justify-content:center;margin-bottom:24px;color:var(--accent);font-size:22px;font-weight:900;font-family:var(--font-head)}
+.program-card h3{font-family:var(--font-head);font-size:24px;font-weight:700;margin-bottom:12px;letter-spacing:-.02em}
+.program-card p{color:var(--text-dim);font-size:15px;margin-bottom:20px}
+.program-meta{display:flex;gap:16px;font-size:13px;color:var(--text-dim);padding-top:20px;border-top:1px solid var(--border)}
+.program-meta span{display:flex;align-items:center;gap:6px}
+
+/* TRAINERS */
+.trainers-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.trainer{position:relative;aspect-ratio:3/4;background:var(--bg-2);border-radius:8px;overflow:hidden;border:1px solid var(--border)}
+.trainer-img{position:absolute;inset:0;background:linear-gradient(135deg,#2a2a2a 0%,#0f0f0f 100%)}
+.trainer-img::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 30%,rgba(255,90,31,.2),transparent 60%)}
+.trainer-info{position:absolute;bottom:0;left:0;right:0;padding:24px;background:linear-gradient(to top,rgba(0,0,0,.95),transparent);z-index:2}
+.trainer-info h4{font-family:var(--font-head);font-size:20px;font-weight:700;margin-bottom:4px}
+.trainer-info span{font-size:13px;color:var(--accent);text-transform:uppercase;letter-spacing:.1em}
+
+/* SCHEDULE */
+.schedule{background:var(--bg-2);padding:0;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.schedule-row{display:grid;grid-template-columns:200px repeat(7,1fr);border-bottom:1px solid var(--border);align-items:center}
+.schedule-row:last-child{border-bottom:none}
+.schedule-row.header{background:var(--bg-3)}
+.schedule-cell{padding:18px 14px;font-size:14px;border-right:1px solid var(--border)}
+.schedule-cell:last-child{border-right:none}
+.schedule-cell.day{font-weight:700;color:var(--text);font-family:var(--font-head)}
+.schedule-row.header .schedule-cell{font-size:12px;font-weight:700;color:var(--text-dim);text-transform:uppercase;letter-spacing:.1em}
+.schedule-slot{background:var(--accent);color:#fff;padding:6px 10px;border-radius:4px;font-size:12px;font-weight:600;text-align:center;display:block}
+.schedule-slot.muted{background:transparent;color:var(--text-dim)}
+
+/* PRICING */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.price-card{background:var(--bg-2);border:1px solid var(--border);padding:40px 32px;border-radius:8px;position:relative}
+.price-card.featured{border-color:var(--accent);background:linear-gradient(180deg,rgba(255,90,31,.08),var(--bg-2))}
+.price-badge{position:absolute;top:-12px;left:32px;background:var(--accent);color:#fff;padding:6px 14px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;border-radius:4px}
+.price-name{font-size:14px;font-weight:600;color:var(--text-dim);text-transform:uppercase;letter-spacing:.15em;margin-bottom:16px}
+.price-amount{font-family:var(--font-head);font-size:64px;font-weight:900;line-height:1;margin-bottom:8px;letter-spacing:-.03em}
+.price-amount small{font-size:18px;color:var(--text-dim);font-weight:500}
+.price-desc{color:var(--text-dim);font-size:14px;margin-bottom:32px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+.price-features{list-style:none;margin-bottom:32px}
+.price-features li{padding:10px 0;font-size:15px;color:var(--text);display:flex;align-items:flex-start;gap:10px}
+.price-features li::before{content:"✓";color:var(--accent);font-weight:700;flex-shrink:0}
+
+/* CONTACT */
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px}
+.contact-info h2{font-family:var(--font-head);font-size:48px;font-weight:800;line-height:1.05;letter-spacing:-.03em;margin-bottom:20px}
+.contact-info p{color:var(--text-dim);margin-bottom:40px;font-size:16px}
+.contact-detail{margin-bottom:24px}
+.contact-detail strong{display:block;font-size:12px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.15em;margin-bottom:6px}
+.contact-detail span{font-size:17px}
+.contact-form{display:flex;flex-direction:column;gap:16px}
+.contact-form input,.contact-form select,.contact-form textarea{background:var(--bg-2);border:1px solid var(--border);color:var(--text);padding:14px 16px;font-size:15px;border-radius:6px;font-family:inherit;transition:border-color .2s}
+.contact-form input:focus,.contact-form select:focus,.contact-form textarea:focus{outline:none;border-color:var(--accent)}
+.contact-form textarea{resize:vertical;min-height:120px}
+
+/* FOOTER */
+footer{background:var(--bg-2);border-top:1px solid var(--border);padding:60px 0 30px}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.footer-brand p{color:var(--text-dim);font-size:14px;margin-top:16px;max-width:280px}
+.footer-col h5{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.15em;margin-bottom:18px}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:10px}
+.footer-col a{color:var(--text-dim);font-size:14px;transition:color .2s}
+.footer-col a:hover{color:var(--accent)}
+.footer-bottom{padding-top:30px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--text-dim)}
+.socials{display:flex;gap:12px}
+.socials a{width:36px;height:36px;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--text-dim);transition:all .2s;font-size:14px;font-weight:600}
+.socials a:hover{border-color:var(--accent);color:var(--accent)}
+
+/* RESPONSIVE */
+@media(max-width:968px){
+  .hero-inner,.contact-wrap{grid-template-columns:1fr;gap:40px}
+  .programs-grid,.trainers-grid,.pricing-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .schedule-row{grid-template-columns:120px repeat(7,1fr);font-size:12px}
+  .schedule-cell{padding:12px 8px}
+}
+@media(max-width:640px){
+  .nav-menu{display:none;position:fixed;top:70px;left:0;right:0;background:var(--bg-2);flex-direction:column;padding:24px;gap:20px;border-bottom:1px solid var(--border)}
+  .nav-menu.open{display:flex}
+  .menu-toggle{display:block}
+  .programs-grid,.trainers-grid,.pricing-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;gap:16px;text-align:center}
+  .schedule-row{grid-template-columns:90px repeat(4,1fr);overflow-x:auto}
+  section{padding:60px 0}
+  .hero{padding:80px 0 60px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="#" class="logo"><span class="logo-dot"></span>FORGE</a>
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="#programs">Programs</a></li>
+      <li><a href="#trainers">Trainers</a></li>
+      <li><a href="#schedule">Schedule</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#contact" class="btn btn-primary">Start Free Trial</a></li>
+    </ul>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container hero-inner">
+    <div>
+      <span class="hero-eyebrow">Indiranagar · Bangalore</span>
+      <h1>Train Smarter.<br>Get <span>Stronger.</span></h1>
+      <p>FORGE is a premium strength and conditioning studio for people who take training seriously. Real coaches. Real programming. Real results.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary">Book Free Trial →</a>
+        <a href="#programs" class="btn btn-ghost">View Programs</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">12<span>+</span></div>
+        <div class="stat-label">Years Training</div>
+      </div>
+      <div>
+        <div class="stat-num">2.4k<span>+</span></div>
+        <div class="stat-label">Members</div>
+      </div>
+      <div>
+        <div class="stat-num">18</div>
+        <div class="stat-label">Expert Coaches</div>
+      </div>
+      <div>
+        <div class="stat-num">4.9<span>★</span></div>
+        <div class="stat-label">Rated 4.9/5</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="programs">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow">Programs</span>
+      <h2>Built for serious training.</h2>
+      <p>Six focused programs. No gimmicks. Every session designed by coaches who have competed at the highest level.</p>
+    </div>
+    <div class="programs-grid">
+      <article class="program-card">
+        <div class="program-icon">01</div>
+        <h3>Strength Foundations</h3>
+        <p>Master the big lifts with structured progression and form coaching. Perfect for beginners who want to start right.</p>
+        <div class="program-meta"><span>⏱ 60 min</span><span>👥 8 max</span></div>
+      </article>
+      <article class="program-card">
+        <div class="program-icon">02</div>
+        <h3>Powerlifting Club</h3>
+        <p>Compete-prep programming for squat, bench, and deadlift. Periodized blocks for peak performance.</p>
+        <div class="program-meta"><span>⏱ 90 min</span><span>👥 6 max</span></div>
+      </article>
+      <article class="program-card">
+        <div class="program-icon">03</div>
+        <h3>HIIT Conditioning</h3>
+        <p>High-intensity intervals that build capacity and burn fat. Smart work, not random suffering.</p>
+        <div class="program-meta"><span>⏱ 45 min</span><span>👥 12 max</span></div>
+      </article>
+      <article class="program-card">
+        <div class="program-icon">04</div>
+        <h3>Olympic Lifting</h3>
+        <p>Learn snatch and clean & jerk from certified coaches. Technique-first approach for all levels.</p>
+        <div class="program-meta"><span>⏱ 75 min</span><span>👥 8 max</span></div>
+      </article>
+      <article class="program-card">
+        <div class="program-icon">05</div>
+        <h3>1-on-1 Coaching</h3>
+        <p>Personalized programming, nutrition guidance, and weekly check-ins. Your fastest path to results.</p>
+        <div class="program-meta"><span>⏱ 60 min</span><span>👥 1 only</span></div>
+      </article>
+      <article class="program-card">
+        <div class="program-icon">06</div>
+        <h3>Athlete Performance</h3>
+        <p>Sport-specific training for cricket, football, and combat athletes. Build speed, power, and resilience.</p>
+        <div class="program-meta"><span>⏱ 90 min</span><span>👥 6 max</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="trainers">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow">Coaches</span>
+      <h2>Coaches who actually coach.</h2>
+      <p>Every FORGE coach is a certified professional with competitive experience. No interns. No fill-ins.</p>
+    </div>
+    <div class="trainers-grid">
+      <div class="trainer">
+        <div class="trainer-img"></div>
+        <div class="trainer-info"><h4>Arjun Mehta</h4><span>Head Coach · Strength</span></div>
+      </div>
+      <div class="trainer">
+        <div class="trainer-img"></div>
+        <div class="trainer-info"><h4>Priya Nair</h4><span>Olympic Lifting</span></div>
+      </div>
+      <div class="trainer">
+        <div class="trainer-img"></div>
+        <div class="trainer-info"><h4>Rohan Desai</h4><span>HIIT & Conditioning</span></div>
+      </div>
+      <div class="trainer">
+        <div class="trainer-img"></div>
+        <div class="trainer-info"><h4>Kavya Reddy</h4><span>Athlete Performance</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="schedule">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow">Schedule</span>
+      <h2>Train on your time.</h2>
+      <p>30+ sessions every week. Morning, noon, and night — fit training around your life, not the other way around.</p>
+    </div>
+    <div class="schedule">
+      <div class="schedule-row header">
+        <div class="schedule-cell">Time</div>
+        <div class="schedule-cell">Mon</div>
+        <div class="schedule-cell">Tue</div>
+        <div class="schedule-cell">Wed</div>
+        <div class="schedule-cell">Thu</div>
+        <div class="schedule-cell">Fri</div>
+        <div class="schedule-cell">Sat</div>
+        <div class="schedule-cell">Sun</div>
+      </div>
+      <div class="schedule-row">
+        <div class="schedule-cell day">6:00 AM</div>
+        <div class="schedule-cell"><span class="schedule-slot">Strength</span></div>
+        <div class="schedule-cell"><span class="schedule-slot">HIIT</span></div>
+        <div class="schedule-cell"><span class="schedule-slot">Strength</span></div>
+        <div class="schedule-cell"><span class="schedule-slot">HIIT</span></div>
+        <div class="schedule-cell"><span class="schedule-slot">Strength</span></div>
+        <div class="schedule-cell"><span class="schedule-slot">Olympic</span></div>
+        <div class="schedule-cell"><span class="schedule-slot muted">—</span></div>
+      </div>
+      <div class="schedule-row">
+        <div class="schedule-cell day">9:00 AM</div>
+        <div class="schedule-cell"><span class="schedule-slot">Olympic</span></div>
+        <div class="schedule-cell"><span class="schedule-slot">Strength</span></div>
+        <div class="schedule-cell"><span class="schedule-slot">Olympic</span></div>
+        <div class="schedule-cell"><span class="schedule-slot">Strength</span></div>
+        <div class="schedule-cell"><span class="schedule-slot">Olympic</span></div>
+        <div class="schedule-cell"><span class="schedule-slot">HIIT</span></div>
+        <div class="schedule-cell"><span class="schedule-slot">Open Gym</span></div>
+      </div>
+      <div class="schedule-row">
+        <div class="schedule-cell day">5:30 PM</div>
+        <div class="schedule-cell"><span class="schedule-slot">HIIT</span></div>
+        <div class="schedule-cell"><span class="schedule-slot">Strength</span></div>
+        <div class="schedule-cell"><span class="schedule-slot">HIIT</span></div>
+        <div class="schedule-cell"><span class="schedule-slot">Strength</span></div>
+        <div class="schedule-cell"><span class="schedule-slot">HIIT</span></div>
+        <div class="schedule-cell"><span class="schedule-slot muted">—</span></div>
+        <div class="schedule-cell"><span class="schedule-slot muted">—</span></div>
+      </div>
+      <div class="schedule-row">
+        <div class="schedule-cell day">7:30 PM</div>
+        <div class="schedule-cell"><span class="schedule-slot">Strength</span></div>
+        <div class="schedule-cell"><span class="schedule-slot">Olympic</span></div>
+        <div class="schedule-cell"><span class="schedule-slot">Strength</span></div>
+        <div class="schedule-cell"><span class="schedule-slot">Olympic</span></div>
+        <div class="schedule-cell"><span class="schedule-slot">Strength</span></div>
+        <div class="schedule-cell"><span class="schedule-slot muted">—</span></div>
+        <div class="schedule-cell"><span class="schedule-slot muted">—</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-eyebrow">Membership</span>
+      <h2>Simple, honest pricing.</h2>
+      <p>No hidden fees. No 24-month contracts. Cancel anytime.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-name">Starter</div>
+        <div class="price-amount">₹2,499<small>/mo</small></div>
+        <p class="price-desc">Perfect for getting started with structured training.</p>
+        <ul class="price-features">
+          <li>4 group sessions / month</li>
+          <li>Open gym access</li>
+          <li>App workout tracking</li>
+          <li>Monthly progress check-in</li>
+        </ul>
+        <a href="#contact" class="btn btn-ghost" style="width:100%;justify-content:center">Choose Starter</a>
+      </div>
+      <div class="price-card featured">
+        <span class="price-badge">Most Popular</span>
+        <div class="price-name">Unlimited</div>
+        <div class="price-amount">₹5,999<small>/mo</small></div>
+        <p class="price-desc">Train as much as you want with full access to everything.</p>
+        <ul class="price-features">
+          <li>Unlimited group sessions</li>
+          <li>Full open gym access</li>
+          <li>App + video library</li>
+          <li>Bi-weekly progress review</li>
+          <li>Guest passes (2/month)</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary" style="width:100%;justify-content:center">Choose Unlimited</a>
+      </div>
+      <div class="price-card">
+        <div class="price-name">1-on-1</div>
+        <div class="price-amount">₹14,999<small>/mo</small></div>
+        <p class="price-desc">Personalized coaching for serious transformation.</p>
+        <ul class="price-features">
+          <li>8 personal sessions / month</li>
+          <li>Custom program design</li>
+          <li>Nutrition coaching</li>
+          <li>Weekly video check-ins</li>
+          <li>Priority booking</li>
+        </ul>
+        <a href="#contact" class="btn btn-ghost" style="width:100%;justify-content:center">Choose 1-on-1</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="contact-wrap">
+      <div class="contact-info">
+        <h2>Start with a free trial.</h2>
+        <p>Book a complimentary session and experience FORGE before you commit. No pressure, no sales pitch — just training.</p>
+        <div class="contact-detail">
+          <strong>Studio</strong>
+          <span>12th Main, Indiranagar<br>Bangalore — 560038</span>
+        </div>
+        <div class="contact-detail">
+          <strong>Hours</strong>
+          <span>Mon–Fri: 5:30 AM – 10:00 PM<br>Sat–Sun: 7:00 AM – 8:00 PM</span>
+        </div>
+        <div class="contact-detail">
+          <strong>Contact</strong>
+          <span>+91 80 4567 8900<br>hello@forgefitness.in</span>
+        </div>
+      </div>
+      <form class="contact-form" onsubmit="event.preventDefault();alert('Thanks! We will contact you within 24 hours.')">
+        <input type="text" placeholder="Full name" required>
+        <input type="email" placeholder="Email address" required>
+        <input type="tel" placeholder="Phone number" required>
+        <select required>
+          <option value="">Interested in...</option>
+          <option>Strength Foundations</option>
+          <option>Powerlifting Club</option>
+          <option>HIIT Conditioning</option>
+          <option>Olympic Lifting</option>
+          <option>1-on-1 Coaching</option>
+          <option>Athlete Performance</option>
+        </select>
+        <textarea placeholder="Tell us about your training goals..."></textarea>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:16px">Book Free Trial →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo"><span class="logo-dot"></span>FORGE</a>
+        <p>Premium strength and conditioning studio in the heart of Indiranagar. Train smarter. Get stronger.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Studio</h5>
+        <ul>
+          <li><a href="#programs">Programs</a></li>
+          <li><a href="#trainers">Coaches</a></li>
+          <li><a href="#schedule">Schedule</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#">Our Story</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Terms</a></li>
+          <li><a href="#">Refund Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 FORGE Fitness. All rights reserved.</div>
+      <div class="socials">
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="YouTube">YT</a>
+        <a href="#" aria-label="Twitter">X</a>
+        <a href="#" aria-label="Facebook">FB</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('menuToggle').addEventListener('click',()=>{
+  document.getElementById('navMenu').classList.toggle('open');
+});
+document.querySelectorAll('.nav-menu a').forEach(link=>{
+  link.addEventListener('click',()=>document.getElementById('navMenu').classList.remove('open'));
+});
+</script>
+</body>
+</html>
